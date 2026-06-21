@@ -30,7 +30,7 @@ export default function Navbar() {
         <Link href="/" className="text-xl font-bold tracking-tight text-[#F8FAFC] hover:text-[#2563EB] transition-colors">
           VAIBHAV<span className="text-[#2563EB]">.DEV</span>
         </Link>
-        
+
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
           {navLinks.map((link) => (
@@ -48,7 +48,7 @@ export default function Navbar() {
         {/* Resume Button */}
         <div className="hidden md:block">
           <a
-            href="/resume/vaibhav-resume.pdf"
+            href="/resume/VAIBHAV_RESUME.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 text-xs font-semibold rounded-lg bg-[#1E293B] hover:bg-[#2563EB] text-[#F8FAFC] transition-colors border border-white/5"

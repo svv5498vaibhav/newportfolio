@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { apiFetch } from '@/lib/api';
 
 export default function About() {
-  const [stats, setStats] = useState({ dsaSolved: 70, hackathonsWon: 3, totalPageViews: 0 });
+  const [stats, setStats] = useState({ dsaSolved: 30, hackathonsWon: 2, totalPageViews: 100 });
 
   useEffect(() => {
     // Fetch stats
@@ -69,8 +69,8 @@ export default function About() {
 
   const cardVariants = {
     initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
+    animate: {
+      opacity: 1,
       y: 0,
       transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } as any
     }
@@ -87,7 +87,7 @@ export default function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Panel: Biography */}
-          <motion.div 
+          <motion.div
             className="lg:col-span-6 space-y-6 text-[#94A3B8] text-base leading-relaxed"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -98,7 +98,7 @@ export default function About() {
               I am currently pursuing my <strong>B.Tech in Computer Science Engineering</strong> at <strong>Priyadarshini Bhagwati College of Engineering, Nagpur</strong> (2023 - 2027). My technical focus is centered on software development, full-stack frameworks, and algorithm optimization.
             </p>
             <p>
-              Having worked on platforms like <em>CampusX</em> and booking solutions like an <em>Airbnb Clone</em>, I have developed strong skills in designing backend APIs, modeling relational/document schemas, and coding responsive frontend layouts.
+              Having worked on platforms like <em>CampusX</em>, I have developed strong skills in designing backend APIs, modeling relational/document schemas, and coding responsive frontend layouts.
             </p>
             <p>
               I thrive in high-pressure environments, which has led me to win three hackathons and pitch prototypes in local startup arenas. I look forward to working with dynamic engineering teams where I can contribute to shipping production code.
@@ -106,7 +106,7 @@ export default function About() {
           </motion.div>
 
           {/* Right Panel: Highlighted Stats */}
-          <motion.div 
+          <motion.div
             className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6"
             variants={containerVariants}
             initial="initial"
@@ -114,8 +114,8 @@ export default function About() {
             viewport={{ once: true }}
           >
             {statsList.map((stat, i) => (
-              <motion.div 
-                key={i} 
+              <motion.div
+                key={i}
                 className="glass-panel p-6 rounded-xl border border-white/5 flex gap-4 items-start hover:border-[#2563EB]/40 transition-colors duration-300"
                 variants={cardVariants}
                 whileHover={{ y: -4, scale: 1.01 }}

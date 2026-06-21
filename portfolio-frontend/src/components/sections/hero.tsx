@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram } from "react-icons/fa";
 
 export default function Hero() {
   const fadeUp = {
@@ -45,7 +45,7 @@ export default function Hero() {
           </motion.div>
 
           <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#F8FAFC] leading-none">
-            Engineering Scalable Software. <span className="bg-gradient-to-r from-[#2563EB] to-[#7C3AED] bg-clip-text text-transparent">Building Startup Solutions.</span>
+            Vaibhav Vikas Sawarbandhe. <span className="bg-gradient-to-r from-[#2563EB] to-[#7C3AED] bg-clip-text text-transparent">Full Stack Developer & Startup Builder.</span>
           </motion.h1>
 
           <motion.p variants={fadeUp} className="text-lg text-[#94A3B8] max-w-xl mx-auto lg:mx-0">
@@ -60,7 +60,7 @@ export default function Hero() {
               Explore Projects
             </a>
             <a
-              href="/resume/vaibhav-resume.pdf"
+              href="/resume/VAIBHAV_RESUME.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-lg bg-[#1E293B] hover:bg-[#334155] border border-white/5 text-[#F8FAFC] font-semibold text-center transition-all"
@@ -71,7 +71,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Right Column: Profile Image */}
-        <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
+        <div className="lg:col-span-5 flex flex-col items-center order-1 lg:order-2">
           <motion.div
             className="profile-glow relative w-[240px] h-[240px] lg:w-[350px] lg:h-[350px] bg-[#1E293B] rounded-[24%] overflow-hidden border border-white/10 transition-transform duration-300 hover:scale-[1.03]"
             initial="initial"
@@ -90,7 +90,7 @@ export default function Hero() {
           </motion.div>
           <motion.div
             variants={fadeUp}
-            className="flex items-center gap-4 justify-center lg:justify-start pt-2"
+            className="flex items-center gap-4 justify-center mt-6"
           >
             <a
               href="https://github.com/svv5498vaibhav"
@@ -115,6 +115,15 @@ export default function Hero() {
               aria-label="Email"
             >
               <FaEnvelope className="w-5 h-5" />
+            </a>
+
+            <a
+              href="https://instagram.com/_vaibhavv_vv_"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <FaInstagram className="w-5 h-5" />
             </a>
           </motion.div>
         </div>

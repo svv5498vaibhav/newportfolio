@@ -17,7 +17,7 @@ export async function GET() {
     return NextResponse.json(data);
   } catch (error: any) {
     console.error('Projects Fetch Error:', error.message);
-    
+
     // Static fallback schema in case MongoDB is unseeded or backend server is offline
     return NextResponse.json({
       success: true,
@@ -26,11 +26,27 @@ export async function GET() {
           _id: "campusx",
           title: "CampusX",
           slug: "campus-x",
-          summary: "A student-focused networking and achievement collaboration platform where students share accomplishments and pitch startup ideas.",
-          description: "Built a centralized system mapping achievements to student profiles and providing real-time feed updates using Next.js App Router for server-rendered page assets and custom APIs.",
-          techStack: ["Next.js", "Express.js", "MongoDB", "Node.js", "Tailwind CSS"],
-          githubUrl: "https://github.com/svv5498/campusx",
+
+          summary:
+            "LinkedIn-inspired student ecosystem where students showcase achievements, share innovative ideas, build teams, and provide anonymous campus feedback.",
+
+          description:
+            "Problem: Students lack a dedicated platform for networking, collaboration, and showcasing achievements inside their college ecosystem.\nSolution: Built CampusX with branch-based communities, anonymous feedback, student rankings, achievement showcases, innovation sharing, and AI-powered engagement systems.",
+
+          techStack: [
+            "React",
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "Redis",
+            "JWT",
+            "Tailwind CSS"
+          ],
+
+          githubUrl: "https://github.com/svv5498vaibhav/socialcampus",
+
           liveUrl: "https://campusx.dev",
+
           views: 154
         },
         {
@@ -51,9 +67,9 @@ export async function GET() {
           summary: "This premium SaaS-inspired website showcasing skills, hackathons, and dynamic visitor and view logs.",
           description: "Implemented font optimization structures, server-rendered components, and dynamic asynchronous import setups for overlay modals.",
           techStack: ["Next.js 15", "TypeScript", "Tailwind CSS", "Framer Motion", "MongoDB"],
-          githubUrl: "https://github.com/svv5498/portfolio",
-          liveUrl: "https://vaibhav.dev",
-          views: 245
+          githubUrl: "https://github.com/svv5498vaibhav/newportfolio",
+          liveUrl: "https://newportfolio-omega-navy.vercel.app/",
+          views: 100
         }
       ]
     });

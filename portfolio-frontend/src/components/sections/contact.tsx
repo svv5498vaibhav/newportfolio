@@ -83,7 +83,7 @@ export default function Contact() {
                   <span className="text-xs text-[#94A3B8] block">Email Address</span>
                   <span className="text-sm font-semibold text-[#F8FAFC] truncate block">svv5498@gmail.com</span>
                 </div>
-                <button 
+                <button
                   onClick={handleCopyEmail}
                   className="p-2 bg-[#1E293B] hover:bg-[#2563EB]/10 border border-white/5 rounded-lg text-[#94A3B8] hover:text-[#F8FAFC] transition-colors"
                   title="Copy email to clipboard"

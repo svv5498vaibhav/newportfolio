@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { ExternalLink, Eye, X, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { apiFetch } from '@/lib/api';
+import Image from "next/image";
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -80,7 +81,7 @@ export default function Projects() {
 
         {/* 1. Featured Split Project Layout (CampusX) */}
         {featuredProject && (
-          <motion.div 
+          <motion.div
             className="glass-panel rounded-2xl overflow-hidden border border-white/5 grid grid-cols-1 lg:grid-cols-12 hover:border-[#2563EB]/40 transition-colors duration-300 shadow-xl"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -88,11 +89,23 @@ export default function Projects() {
             transition={{ duration: 0.6 }}
           >
             {/* Visual Layer (Left 7 Cols) */}
-            <div className="lg:col-span-7 bg-gradient-to-br from-[#1E293B] to-[#0F172A] min-h-[300px] flex items-center justify-center p-8 relative overflow-hidden group border-b lg:border-b-0 lg:border-r border-white/5">
-              <span className="text-2xl font-bold text-[#F8FAFC]/30 group-hover:scale-105 transition-transform duration-500 tracking-wider uppercase font-heading select-none">
-                {featuredProject.title} Platform
-              </span>
-              <div className="absolute inset-0 bg-[#2563EB]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="lg:col-span-7 min-h-[300px] relative overflow-hidden border-b lg:border-b-0 lg:border-r border-white/5">
+
+              <Image
+                src="/images/campusx.png"
+                alt="CampusX Platform"
+                fill
+                className="object-cover"
+              />
+
+              <div className="absolute inset-0 bg-black/30" />
+
+              <div className="absolute top-4 left-4 z-10">
+                <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                  Featured Project
+                </span>
+              </div>
+
             </div>
 
             {/* Content Details (Right 5 Cols) */}
@@ -103,7 +116,7 @@ export default function Projects() {
                 </div>
                 <h4 className="text-2xl sm:text-3xl font-extrabold text-[#F8FAFC] tracking-tight">{featuredProject.title}</h4>
                 <p className="text-sm text-[#94A3B8] leading-relaxed">{featuredProject.summary}</p>
-                
+
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 pt-2">
                   {featuredProject.techStack.map((tech, idx) => (
@@ -116,7 +129,7 @@ export default function Projects() {
 
               {/* Actions Footer */}
               <div className="flex items-center justify-between pt-6 border-t border-white/5">
-                <button 
+                <button
                   onClick={() => setSelectedProject(featuredProject)}
                   className="text-xs font-semibold text-[#F8FAFC] hover:text-[#2563EB] flex items-center gap-2 transition-colors"
                 >
@@ -141,7 +154,7 @@ export default function Projects() {
 
         {/* 2. Standard Grid Layout (Airbnb, Portfolio) */}
         {regularProjects.length > 0 && (
-          <motion.div 
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
             variants={containerVariants}
             initial="initial"
@@ -149,8 +162,8 @@ export default function Projects() {
             viewport={{ once: true }}
           >
             {regularProjects.map((project) => (
-              <motion.div 
-                key={project._id} 
+              <motion.div
+                key={project._id}
                 className="glass-panel rounded-xl overflow-hidden border border-white/5 flex flex-col group hover:border-[#2563EB]/40 transition-colors duration-300"
                 variants={itemVariants}
                 whileHover={{ y: -4, scale: 1.01 }}
@@ -167,7 +180,7 @@ export default function Projects() {
                 <div className="p-6 flex flex-col flex-1 space-y-4">
                   <h4 className="text-xl font-bold text-[#F8FAFC]">{project.title}</h4>
                   <p className="text-sm text-[#94A3B8] line-clamp-3 leading-relaxed">{project.summary}</p>
-                  
+
                   {/* Badges */}
                   <div className="flex flex-wrap gap-1.5 pt-2">
                     {project.techStack.map((tech, idx) => (
@@ -179,7 +192,7 @@ export default function Projects() {
 
                   {/* Actions */}
                   <div className="flex justify-between items-center pt-4 mt-auto border-t border-white/5">
-                    <button 
+                    <button
                       onClick={() => setSelectedProject(project)}
                       className="text-xs font-semibold text-[#F8FAFC] hover:text-[#2563EB] flex items-center gap-1.5 transition-colors"
                     >
@@ -209,7 +222,7 @@ export default function Projects() {
       <AnimatePresence>
         {selectedProject && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-            <motion.div 
+            <motion.div
               className="glass-panel w-full max-w-3xl rounded-xl border border-white/10 max-h-[85vh] overflow-y-auto shadow-2xl relative flex flex-col"
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -219,7 +232,7 @@ export default function Projects() {
               {/* Header */}
               <div className="p-6 border-b border-white/5 flex justify-between items-center sticky top-0 bg-[#1E293B] z-10">
                 <h3 className="text-2xl font-bold text-[#F8FAFC]">{selectedProject.title} Case Study</h3>
-                <button 
+                <button
                   onClick={() => setSelectedProject(null)}
                   className="p-1.5 rounded-lg bg-[#0F172A] hover:bg-[#2563EB]/10 border border-white/5 text-[#94A3B8] hover:text-[#F8FAFC] transition-colors"
                 >
@@ -265,9 +278,9 @@ export default function Projects() {
               {/* Footer */}
               <div className="p-6 border-t border-white/5 flex justify-end gap-4 bg-[#1E293B]">
                 {selectedProject.githubUrl && (
-                  <a 
-                    href={selectedProject.githubUrl} 
-                    target="_blank" 
+                  <a
+                    href={selectedProject.githubUrl}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="px-4 py-2 rounded-lg bg-[#0F172A] border border-white/5 hover:bg-[#334155] text-[#F8FAFC] font-semibold text-xs transition-colors flex items-center gap-2"
                   >
@@ -275,9 +288,9 @@ export default function Projects() {
                   </a>
                 )}
                 {selectedProject.liveUrl && (
-                  <a 
-                    href={selectedProject.liveUrl} 
-                    target="_blank" 
+                  <a
+                    href={selectedProject.liveUrl}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="px-4 py-2 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold text-xs transition-colors flex items-center gap-2"
                   >

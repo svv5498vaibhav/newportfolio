@@ -26,14 +26,14 @@ export default function Resume() {
 
           <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
             <a
-              href="/resume/vaibhav-resume.pdf"
+              href="/resume/VAIBHAV_RESUME.pdf"
               download="Vaibhav_Sawarbandhe_Resume.pdf"
               className="flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-sm font-semibold transition-colors"
             >
               <Download className="w-4 h-4" /> Download PDF
             </a>
             <a
-              href="/resume/vaibhav-resume.pdf"
+              href="/resume/VAIBHAV_RESUME.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-[#1E293B] border border-white/5 hover:bg-[#334155] text-[#F8FAFC] text-sm font-semibold transition-colors"
