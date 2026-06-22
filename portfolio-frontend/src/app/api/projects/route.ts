@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:5000/api/projects';
+    const backendUrl = process.env.BACKEND_API_URL || 'https://portfolio-backend-9111.onrender.com/api/projects';
     const response = await fetch(backendUrl, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
