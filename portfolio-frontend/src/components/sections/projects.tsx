@@ -5,6 +5,7 @@ import { ExternalLink, Eye, X, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { apiFetch } from '@/lib/api';
 import Image from "next/image";
+import SectionReveal from '@/components/animations/SectionReveal';
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -73,11 +74,13 @@ export default function Projects() {
   return (
     <section id="projects" className="py-20 bg-[#0F172A]">
       <div className="max-w-7xl mx-auto px-6 space-y-12">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-2">My Work</h2>
-          <h3 className="text-3xl sm:text-4xl font-bold text-[#F8FAFC]">Featured Projects</h3>
-          <div className="w-12 h-1 bg-[#2563EB] mx-auto mt-4 rounded-full" />
-        </div>
+        <SectionReveal>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-2">My Work</h2>
+            <h3 className="text-3xl sm:text-4xl font-bold text-[#F8FAFC]">Featured Projects</h3>
+            <div className="w-12 h-1 bg-[#2563EB] mx-auto mt-4 rounded-full" />
+          </div>
+        </SectionReveal>
 
         {/* 1. Featured Split Project Layout (CampusX) */}
         {featuredProject && (

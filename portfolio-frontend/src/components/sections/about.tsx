@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Award, Code, Rocket, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { apiFetch } from '@/lib/api';
+import SectionReveal from '@/components/animations/SectionReveal';
 
 export default function About() {
   const [stats, setStats] = useState({ dsaSolved: 30, hackathonsWon: 2, totalPageViews: 100 });
@@ -79,11 +80,13 @@ export default function About() {
   return (
     <section id="about" className="py-20 bg-[#0F172A]">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-2">About Me</h2>
-          <h3 className="text-3xl sm:text-4xl font-bold text-[#F8FAFC]">Student, Developer, & Builder</h3>
-          <div className="w-12 h-1 bg-[#2563EB] mx-auto mt-4 rounded-full" />
-        </div>
+        <SectionReveal>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-2">About Me</h2>
+            <h3 className="text-3xl sm:text-4xl font-bold text-[#F8FAFC]">Student, Developer, & Builder</h3>
+            <div className="w-12 h-1 bg-[#2563EB] mx-auto mt-4 rounded-full" />
+          </div>
+        </SectionReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Panel: Biography */}

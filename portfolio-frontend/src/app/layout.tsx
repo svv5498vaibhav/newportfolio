@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import MouseSpotlight from "@/components/ui/MouseSpotlight";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -81,6 +82,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-[#0F172A] text-[#F8FAFC] antialiased min-h-screen flex flex-col">
+        <MouseSpotlight />
         {children}
       </body>
     </html>

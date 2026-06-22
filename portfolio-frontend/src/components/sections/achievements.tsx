@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Calendar, Star, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { apiFetch } from '@/lib/api';
+import SectionReveal from '@/components/animations/SectionReveal';
 
 interface AchievementItem {
   _id: string;
@@ -61,11 +62,13 @@ export default function Achievements() {
   return (
     <section id="achievements" className="py-20 bg-[#0F172A]">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-2">My Milestones</h2>
-          <h3 className="text-3xl sm:text-4xl font-bold text-[#F8FAFC]">Achievements & Honors</h3>
-          <div className="w-12 h-1 bg-[#2563EB] mx-auto mt-4 rounded-full" />
-        </div>
+        <SectionReveal>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-2">My Milestones</h2>
+            <h3 className="text-3xl sm:text-4xl font-bold text-[#F8FAFC]">Achievements & Honors</h3>
+            <div className="w-12 h-1 bg-[#2563EB] mx-auto mt-4 rounded-full" />
+          </div>
+        </SectionReveal>
 
         {/* Timeline Layout */}
         <motion.div 

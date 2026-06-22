@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { Send, Mail, MapPin, Copy, Check } from 'lucide-react';
 import { apiFetch } from '@/lib/api';
+import { motion } from 'framer-motion';
+import SectionReveal from '@/components/animations/SectionReveal';
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -60,13 +62,21 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 bg-[#0F172A]">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-2">Get In Touch</h2>
-          <h3 className="text-3xl sm:text-4xl font-bold text-[#F8FAFC]">Contact Message Terminal</h3>
-          <div className="w-12 h-1 bg-[#2563EB] mx-auto mt-4 rounded-full" />
-        </div>
+        <SectionReveal>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-2">Get In Touch</h2>
+            <h3 className="text-3xl sm:text-4xl font-bold text-[#F8FAFC]">Contact Message Terminal</h3>
+            <div className="w-12 h-1 bg-[#2563EB] mx-auto mt-4 rounded-full" />
+          </div>
+        </SectionReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start max-w-5xl mx-auto">
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start max-w-5xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
           {/* Left Column: Direct Info */}
           <div className="lg:col-span-5 space-y-8">
             <h4 className="text-xl font-bold text-[#F8FAFC]">Let's collaborate</h4>
@@ -187,7 +197,7 @@ export default function Contact() {
               )}
             </button>
           </form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

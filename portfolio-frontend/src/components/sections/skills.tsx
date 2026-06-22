@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import SectionReveal from '@/components/animations/SectionReveal';
 
 export default function Skills() {
   const skillCategories = [
@@ -43,11 +44,13 @@ export default function Skills() {
   return (
     <section id="skills" className="py-20 bg-[#0F172A]">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-2">My Stack</h2>
-          <h3 className="text-3xl sm:text-4xl font-bold text-[#F8FAFC]">Technical Proficiencies</h3>
-          <div className="w-12 h-1 bg-[#2563EB] mx-auto mt-4 rounded-full" />
-        </div>
+        <SectionReveal>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-[#2563EB] mb-2">My Stack</h2>
+            <h3 className="text-3xl sm:text-4xl font-bold text-[#F8FAFC]">Technical Proficiencies</h3>
+            <div className="w-12 h-1 bg-[#2563EB] mx-auto mt-4 rounded-full" />
+          </div>
+        </SectionReveal>
 
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
