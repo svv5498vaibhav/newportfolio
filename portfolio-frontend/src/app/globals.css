@@ -99,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Layer 2: Large radial glow behind image */
-.profile-glow::before {
+.profile-glow-wrapper::before {
   content: '';
   position: absolute;
   inset: -40%;
@@ -116,7 +116,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Layer 1: Gradient border glow */
-.profile-glow::after {
+.profile-glow-wrapper::after {
   content: '';
   position: absolute;
   inset: -4px;
@@ -165,11 +165,38 @@ h1, h2, h3, h4, h5, h6 {
 /*  ORBITING TECH STACK RING                                           */
 /* ================================================================= */
 
+.profile-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 440px;
+  height: 440px;
+}
+
+.orbit-track {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1.5px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  width: 440px;
+  height: 440px;
+}
+
 .orbit-ring {
   position: absolute;
-  inset: -48px;
-  animation: orbit-spin 20s linear infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 440px;
+  height: 440px;
+  animation: orbit-spin 25s linear infinite;
   pointer-events: none;
+  z-index: 3;
 }
 
 .orbit-ring:hover {
@@ -182,7 +209,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 50%;
   width: 0;
   height: 0;
-  transform: rotate(var(--orbit-angle)) translateX(min(190px, 38vw)) rotate(calc(-1 * var(--orbit-angle)));
+  transform: rotate(var(--orbit-angle)) translateX(220px) rotate(calc(-1 * var(--orbit-angle)));
   pointer-events: auto;
 }
 
@@ -190,35 +217,38 @@ h1, h2, h3, h4, h5, h6 {
 .orbit-item-inner {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
+  gap: 8px;
+  padding: 6px 14px;
   border-radius: 20px;
-  background: rgba(30, 41, 59, 0.75);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 2px 12px -2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
   white-space: nowrap;
-  transform: translate(-50%, -50%) rotate(calc(-1 * var(--orbit-parent-angle, 0deg)));
-  animation: orbit-counter-spin 20s linear infinite;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transform: translate(-50%, -50%);
+  animation: orbit-counter-spin 25s linear infinite;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .orbit-item-inner:hover {
-  border-color: rgba(37, 99, 235, 0.4);
-  box-shadow: 0 0 20px -4px rgba(37, 99, 235, 0.3);
+  border-color: rgba(37, 99, 235, 0.5);
+  background: rgba(30, 41, 59, 0.9);
+  box-shadow: 0 0 25px -2px rgba(37, 99, 235, 0.4);
+  transform: translate(-50%, -50%) scale(1.1);
+  cursor: pointer;
 }
 
 .orbit-label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  color: #94A3B8;
+  color: #E2E8F0;
   letter-spacing: 0.02em;
 }
 
 @keyframes orbit-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 @keyframes orbit-counter-spin {
@@ -228,17 +258,35 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Responsive orbit sizing */
 @media (max-width: 1024px) {
+  .profile-container {
+    width: 340px;
+    height: 340px;
+  }
+  .orbit-track {
+    width: 340px;
+    height: 340px;
+  }
   .orbit-ring {
-    inset: -36px;
+    width: 340px;
+    height: 340px;
   }
   .orbit-item {
-    transform: rotate(var(--orbit-angle)) translateX(150px) rotate(calc(-1 * var(--orbit-angle)));
+    transform: rotate(var(--orbit-angle)) translateX(170px) rotate(calc(-1 * var(--orbit-angle)));
   }
 }
 
 @media (max-width: 640px) {
+  .profile-container {
+    width: 260px;
+    height: 260px;
+  }
+  .orbit-track {
+    width: 260px;
+    height: 260px;
+  }
   .orbit-ring {
-    inset: -30px;
+    width: 260px;
+    height: 260px;
   }
   .orbit-item {
     transform: rotate(var(--orbit-angle)) translateX(130px) rotate(calc(-1 * var(--orbit-angle)));
@@ -247,8 +295,8 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 10px;
   }
   .orbit-item-inner {
-    padding: 4px 8px;
-    gap: 4px;
+    padding: 4px 10px;
+    gap: 6px;
   }
   .orbit-item-inner svg {
     width: 12px;

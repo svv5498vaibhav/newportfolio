@@ -267,32 +267,37 @@ export default function Hero() {
 
         {/* Right Column: Profile Image + Orbit + Socials */}
         <div className="lg:col-span-5 flex flex-col items-center order-1 lg:order-2">
-          {/* Profile image wrapper with orbit ring */}
-          <div className="relative">
+          {/* Profile container with orbit ring and synchronized float animation */}
+          <div className="profile-container profile-float">
+            {/* Orbit Track (Dotted background circle) */}
+            <div className="orbit-track" aria-hidden="true" />
+
             {/* Orbiting Tech Stack */}
             <OrbitRing />
 
-            {/* Floating profile image */}
-            <motion.div
-              className="profile-glow profile-float relative w-[240px] h-[240px] lg:w-[350px] lg:h-[350px] bg-[#1E293B] rounded-[24%] overflow-hidden border border-white/10"
-              variants={imageVariants}
-              initial="hidden"
-              animate="visible"
-              whileHover={{
-                rotate: 1,
-                scale: 1.03,
-                transition: { type: "spring", stiffness: 200, damping: 20 },
-              }}
-            >
-              <Image
-                src="/images/profile.png"
-                alt="Vaibhav Vikas Sawarbandhe"
-                width={350}
-                height={350}
-                priority
-                className="object-cover w-full h-full"
-              />
-            </motion.div>
+            {/* Profile image wrapper with glow (no overflow-hidden here to prevent clipping glow) */}
+            <div className="profile-glow-wrapper">
+              <motion.div
+                className="relative w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] lg:w-[320px] lg:h-[320px] bg-[#1E293B] rounded-[24%] overflow-hidden border border-white/10"
+                variants={imageVariants}
+                initial="hidden"
+                animate="visible"
+                whileHover={{
+                  rotate: 1,
+                  scale: 1.03,
+                  transition: { type: "spring", stiffness: 200, damping: 20 },
+                }}
+              >
+                <Image
+                  src="/images/profile.png"
+                  alt="Vaibhav Vikas Sawarbandhe"
+                  width={320}
+                  height={320}
+                  priority
+                  className="object-cover w-full h-full"
+                />
+              </motion.div>
+            </div>
           </div>
 
           {/* Social Icons */}

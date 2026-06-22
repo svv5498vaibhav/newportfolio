@@ -115,10 +115,10 @@ export default function Contact() {
 
             {/* Social handles */}
             <div className="flex gap-4 pt-4 border-t border-white/5">
-              <a href="https://github.com/vaibhav-sawarbandhe" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#1E293B] border border-white/5 hover:border-[#2563EB] rounded-lg text-[#94A3B8] hover:text-[#F8FAFC] transition-all">
+              <a href="https://github.com/svv5498vaibhav" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#1E293B] border border-white/5 hover:border-[#2563EB] rounded-lg text-[#94A3B8] hover:text-[#F8FAFC] transition-all">
                 <GithubIcon className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com/in/vaibhav-sawarbandhe" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#1E293B] border border-white/5 hover:border-[#2563EB] rounded-lg text-[#94A3B8] hover:text-[#F8FAFC] transition-all">
+              <a href="https://www.linkedin.com/in/vaibhavsvv" target="_blank" rel="noopener noreferrer" className="p-3 bg-[#1E293B] border border-white/5 hover:border-[#2563EB] rounded-lg text-[#94A3B8] hover:text-[#F8FAFC] transition-all">
                 <LinkedinIcon className="w-5 h-5" />
               </a>
             </div>
