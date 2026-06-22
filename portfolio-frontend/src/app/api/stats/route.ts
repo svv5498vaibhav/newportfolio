@@ -2,7 +2,10 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:5000/api/stats';
+    const rawBaseUrl = process.env.BACKEND_API_URL || 'https://portfolio-backend-9111.onrender.com/api';
+    const apiBase = rawBaseUrl.endsWith('/') ? rawBaseUrl.slice(0, -1) : rawBaseUrl;
+    const normalizedBase = apiBase.includes('/api') ? apiBase : `${apiBase}/api`;
+    const backendUrl = `${normalizedBase}/stats`;
     const response = await fetch(backendUrl, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
@@ -33,7 +36,10 @@ export async function GET() {
 // Support updating page views when client page renders
 export async function POST() {
   try {
-    const backendUrl = process.env.BACKEND_API_URL || 'http://localhost:5000/api/stats/view';
+    const rawBaseUrl = process.env.BACKEND_API_URL || 'https://portfolio-backend-9111.onrender.com/api';
+    const apiBase = rawBaseUrl.endsWith('/') ? rawBaseUrl.slice(0, -1) : rawBaseUrl;
+    const normalizedBase = apiBase.includes('/api') ? apiBase : `${apiBase}/api`;
+    const backendUrl = `${normalizedBase}/stats/view`;
     const response = await fetch(backendUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' }
