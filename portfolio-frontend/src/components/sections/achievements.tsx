@@ -19,6 +19,7 @@ interface AchievementItem {
 export default function Achievements() {
   const [achievements, setAchievements] = useState<AchievementItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     apiFetch('/api/achievements')
@@ -27,7 +28,10 @@ export default function Achievements() {
           setAchievements(data.data);
         }
       })
-      .catch(err => console.error('Error fetching achievements:', err))
+      .catch(err => {
+        console.error('Error fetching achievements:', err);
+        setError(true);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -54,6 +58,16 @@ export default function Achievements() {
         <div className="flex flex-col items-center gap-3">
           <Loader2 className="w-8 h-8 animate-spin text-[#2563EB]" />
           <span className="text-[#94A3B8] text-sm">Compiling Achievements Timeline...</span>
+        </div>
+      </section>
+    );
+  }
+
+  if (error && achievements.length === 0) {
+    return (
+      <section id="achievements" className="py-20 bg-[#0F172A] flex items-center justify-center min-h-[300px]">
+        <div className="flex flex-col items-center gap-3">
+          <span className="text-[#94A3B8] text-sm">Unable to load achievements. Please try again later.</span>
         </div>
       </section>
     );

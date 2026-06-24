@@ -29,6 +29,7 @@ interface ProjectItem {
 export default function Projects() {
   const [projects, setProjects] = useState<ProjectItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   useEffect(() => {
@@ -44,7 +45,10 @@ export default function Projects() {
           setProjects(sorted);
         }
       })
-      .catch(err => console.error('Error fetching projects:', err))
+      .catch(err => {
+        console.error('Error fetching projects:', err);
+        setError(true);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -66,6 +70,16 @@ export default function Projects() {
         <div className="flex flex-col items-center gap-3">
           <Loader2 className="w-8 h-8 animate-spin text-[#2563EB]" />
           <span className="text-[#94A3B8] text-sm">Compiling Portfolio Works...</span>
+        </div>
+      </section>
+    );
+  }
+
+  if (error && projects.length === 0) {
+    return (
+      <section id="projects" className="py-20 bg-[#0F172A] flex items-center justify-center min-h-[400px]">
+        <div className="flex flex-col items-center gap-3">
+          <span className="text-[#94A3B8] text-sm">Unable to load projects. Please try again later.</span>
         </div>
       </section>
     );

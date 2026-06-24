@@ -1,4 +1,7 @@
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '';
+// Client-side fetches always use relative paths to hit Next.js API route handlers.
+// The route handlers proxy requests to the backend and provide fallback data.
+// No NEXT_PUBLIC_API_URL needed — avoids build-time env baking issues on Vercel.
+const API_BASE_URL = '';
 
 export async function apiFetch(endpoint: string, init?: RequestInit) {
   const url = `${API_BASE_URL}${endpoint}`;
