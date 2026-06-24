@@ -13,6 +13,11 @@ const GithubIcon = ({ className }: { className?: string }) => (
     <path d="M9 18c-4.51 2-5-2-7-2" />
   </svg>
 );
+// Slug-to-cover-image mapping for regular project cards
+const PROJECT_COVER_IMAGES: Record<string, string> = {
+  'airbnb-clone': '/images/airbnb.png',
+  'personal-portfolio': '/images/pimage.png',
+};
 
 interface ProjectItem {
   _id: string;
@@ -186,10 +191,23 @@ export default function Projects() {
                 whileHover={{ y: -4, scale: 1.01 }}
               >
                 {/* Visual Cover */}
-                <div className="h-48 bg-gradient-to-br from-[#1E293B] to-[#0F172A] relative flex items-center justify-center border-b border-white/5 overflow-hidden">
-                  <span className="text-[#94A3B8]/50 font-bold text-lg group-hover:scale-105 transition-transform duration-300 select-none">
-                    {project.title}
-                  </span>
+                <div className="h-48 bg-gradient-to-br from-[#1E293B] to-[#0F172A] relative border-b border-white/5 overflow-hidden">
+                  {PROJECT_COVER_IMAGES[project.slug] ? (
+                    <Image
+                      src={PROJECT_COVER_IMAGES[project.slug]}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                    />
+                  ) : (
+                    <div className="flex items-center justify-center w-full h-full">
+                      <span className="text-[#94A3B8]/50 font-bold text-lg select-none">
+                        {project.title}
+                      </span>
+                    </div>
+                  )}
+                  {/* Dark overlay for text readability + blue tint on hover */}
+                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300" />
                   <div className="absolute inset-0 bg-[#2563EB]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
